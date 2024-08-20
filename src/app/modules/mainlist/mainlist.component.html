@@ -1,0 +1,48 @@
+<nav>
+  <button (click)="onLogout()">Logout</button>
+</nav>
+
+<div class="container">
+  <h2>Registro</h2>
+  <form [formGroup]="form" >
+    <div class="form-group">
+      <label for="title">Nota:</label>
+      <input type="text" formControlName="title" id="title" name="title" required>
+    </div>
+    <div class="form-group">
+      <label for="description">Descripcion</label>
+      <input type="text" formControlName="description" id="description" name="description" required>
+    </div>
+    <!-- <div class="form-group">
+            <label for="confirm-password">Confirmar Contraseña:</label>
+            <input type="password" id="confirm-password" name="confirm-password" required>
+        </div> -->
+    <button (click)="newNote()">
+      {{!noteSelected ? 'Crear Nueva Nota': 'Editar Nota'}}
+    </button>
+  </form>
+</div>
+
+<table border="1" cellpadding="10">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Title</th>
+      <th>Description</th>
+      <th>Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    @for (note of noteServices.notes(); track note){
+      <tr>
+        <td>{{note.id}}</td>
+        <td>{{note.title}}</td>
+        <td>{{note.description}}</td>
+        <td>
+          <button (click)="editNote(note)">Editar</button>
+          <button (click)="deleteNote(note)">Eliminar</button>
+        </td>
+      </tr>
+    }
+  </tbody>
+</table>
