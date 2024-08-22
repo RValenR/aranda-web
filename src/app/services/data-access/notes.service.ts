@@ -1,5 +1,4 @@
 import { computed, inject, Injectable, signal } from "@angular/core";
-import { SupabaseClient } from "@supabase/supabase-js";
 import { SupabaseService } from "../supabase.service";
 import { AuthService } from "../auth.service";
 
